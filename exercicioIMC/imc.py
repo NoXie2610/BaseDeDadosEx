@@ -45,7 +45,7 @@ def calcIMC(weigth,heigth):
 
 #IMC by user
 def imcUser():
-    name = input("Enter the name of the user to calculate IMC")
+    name = input("Enter the name of the user to calculate IMC: ")
     cursor.execute("SELECT * FROM username WHERE name = ?", (name,))
     username = cursor.fetchone()
 
@@ -58,36 +58,9 @@ def imcUser():
     else:
         print("User not found.")
 
-# #Show IMCchart
-# def showIMCChart():
-#     cursor.execute("SELECT name,weigh,height FROM username")
-#     users = cursor.fetchall()
-#
-#     names = [user[0] for user in users]
-#     imc_values = [calcIMC(user[1],user[2],user[3],user[4],user[5]) for user in users]
-#
-#     fig, ax = plt.subplots()
-#     ax.bar(names,imc_values)
-#     ax.set_xlabel("users")
-#     ax.set_ylabel("IMC")
-#     ax.set_title("IMC by user")
-#
-#     canvas = FigureCanvasTkAgg(fig,master=root)
-#     canvas.draw()
-#     canvas.get_tk_widget().pack()
-#
-# root = tk.Tk()
-# root.title("IMC Chart")
-#
-# show_button = tk.Button(root, text = "Show IMC Chart", command = showIMCChart)
-# show_button.pack()
-#
-# root.mainloop()
-
-
 
 # User regist
-userRegist(1)
+userRegist(5)
 
 # IMC calc
 imcUser()
@@ -98,6 +71,7 @@ imcUser()
 # username = listUser()
 # for user in username:
 #     print(user)
+
 #Show IMCchart
 def showIMCChart():
     cursor.execute("SELECT name,weight,height FROM username")
